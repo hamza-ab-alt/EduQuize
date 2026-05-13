@@ -1,30 +1,19 @@
 <?php
-declare(strict_types=1);
+class Database {
+    private $host = "localhost";
+    private $db_name = "quiz";
+    private $username = "root";
+    private $password = "";
+    private $conn;
 
-namespace App\Repository;
-
-use Config\Database;
-use App\Entity\Quiz;
-use PDO;
-
-class QuizRepository {
-    private PDO $db;
-
-    public function __construct(PDO $db) {
-        $this->db = $db;
-    }
-
-    public function findByCode(string $code): ?Quiz {
-        $query = "SELECT * FROM quizzes WHERE code_unique = :code LIMIT 1";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute(['code' => $code]);
-
-        $data = $stmt->fetch();
-
-        if (!$data) {
-            return null;
+    public function getConnection() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo "Error inconnexion: " . $exception->getMessage();
         }
-
-        return new Quiz((int)$data['id'], $data['titre'], $data['code_unique']);
+        return $this->conn;
     }
 }
