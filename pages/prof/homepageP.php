@@ -1,6 +1,7 @@
 <?php
 require_once "../../config/database.php";
-$conn=connection();
+$D=new Database();
+$conn=$D->getConnection();
 try {
     $sql="SELECT * FROM quizzes WHERE user_id=?";
     $stm=$conn->prepare($sql);

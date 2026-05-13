@@ -1,8 +1,19 @@
 <?php
-function connection(){
-    try {
-        return $pdo=new PDO("mysql:host=localhost;dbname=quiz","root","");
-    } catch (PDOExcpetion $e) {
-        return  $e->getMessage();
+class Database {
+    private $host = "localhost";
+    private $db_name = "quiz";
+    private $username = "root";
+    private $password = "";
+    private $conn;
+
+    public function getConnection() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo "Error inconnexion: " . $exception->getMessage();
+        }
+        return $this->conn;
     }
 }
