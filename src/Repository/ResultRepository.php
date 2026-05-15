@@ -10,5 +10,9 @@ class ResultRepository {
         $stmt->execute([$userId, $quizId, $score]);
         return $this->pdo->lastInsertId(); 
     }
-    
+    public function saveStudentAnswer($resultId, $questionId, $answerId) {
+        $stmt = $this->pdo->prepare("INSERT INTO student_answers (result_id, question_id, answer_id) VALUES (?, ?, ?)");
+        $stmt->execute([$resultId, $questionId, $answerId]);
+    }
+
     }
