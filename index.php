@@ -76,9 +76,8 @@ if (isset($_GET["logout"])) {
 
     <hr class="my-4">
 
-    <!-- REGISTER -->
+   
     <h2 class="text-xl font-bold mb-2">Register</h2>
-
     <form method="POST">
 
         <input name="name" placeholder="Name" class="border w-full p-2 mb-2">
@@ -97,7 +96,6 @@ if (isset($_GET["logout"])) {
 
 <?php else: ?>
 
-  
     <h2 class="text-xl font-bold">
         Welcome <?= $_SESSION["name"] ?>
     </h2>
