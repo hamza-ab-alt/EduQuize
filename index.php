@@ -85,7 +85,10 @@ if (isset($_GET["logout"])) {
         <input name="email" placeholder="Email" class="border w-full p-2 mb-2">
         <input type="password" name="password" placeholder="Password" class="border w-full p-2 mb-2">
 
-       
+        <select name="role" class="border w-full p-2 mb-2">
+            <option value="prof">Prof</option>
+            <option value="etudiant">Etudiant</option>
+        </select>
 
         <button name="register" class="bg-green-500 text-white w-full p-2">
             Register
@@ -95,15 +98,6 @@ if (isset($_GET["logout"])) {
 <?php else: ?>
 
   
-    <h2 class="text-xl font-bold">
-        Welcome <?= $_SESSION["name"] ?>
-    </h2>
-
-    <p>Role: <?= $_SESSION["role"] ?></p>
-
-    <a href="?logout=1" class="text-red-500">Logout</a>
-
-<?php endif; ?>
 
 </div>
 
