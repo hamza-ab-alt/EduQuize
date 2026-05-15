@@ -47,3 +47,62 @@ if (isset($_GET["logout"])) {
 }
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EduQuiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+<div class="bg-white p-6 rounded-xl w-96">
+
+<?php if (!isset($_SESSION["name"])): ?>
+
+    <!-- LOGIN -->
+    <h2 class="text-xl font-bold mb-2">Login</h2>
+
+    <?php if ($error) echo "<p class='text-red-500'>$error</p>"; ?>
+
+    <form method="POST">
+        <input name="email" placeholder="Email" class="border w-full p-2 mb-2">
+        <input type="password" name="password" placeholder="Password" class="border w-full p-2 mb-2">
+
+        <button name="login" class="bg-blue-500 text-white w-full p-2">
+            Login
+        </button>
+    </form>
+
+    <hr class="my-4">
+
+    <!-- REGISTER -->
+    <h2 class="text-xl font-bold mb-2">Register</h2>
+
+    <form method="POST">
+
+      
+    
+
+        <button name="register" class="bg-green-500 text-white w-full p-2">
+            Register
+        </button>
+    </form>
+
+<?php else: ?>
+
+  
+    <h2 class="text-xl font-bold">
+        Welcome <?= $_SESSION["name"] ?>
+    </h2>
+
+    <p>Role: <?= $_SESSION["role"] ?></p>
+
+    <a href="?logout=1" class="text-red-500">Logout</a>
+
+<?php endif; ?>
+
+</div>
+
+</body>
+</html>
