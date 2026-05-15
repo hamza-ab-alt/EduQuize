@@ -39,7 +39,7 @@ if (isset($_POST["login"])) {
     }
 }
 
-/* ================= LOGOUT ================= */
+
 if (isset($_GET["logout"])) {
     session_destroy();
     header("Location: index.php");
@@ -60,7 +60,7 @@ if (isset($_GET["logout"])) {
 
 <?php if (!isset($_SESSION["name"])): ?>
 
-    <!-- LOGIN -->
+   
     <h2 class="text-xl font-bold mb-2">Login</h2>
 
     <?php if ($error) echo "<p class='text-red-500'>$error</p>"; ?>
