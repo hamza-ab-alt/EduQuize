@@ -88,7 +88,7 @@ if(isset($_POST["update"])){
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">ID</th>
+                           
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Title</th>
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Description</th>
                             <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">code</th>
@@ -98,9 +98,6 @@ if(isset($_POST["update"])){
                     <tbody class="bg-white divide-y divide-gray-100">
                         <?php foreach ($quizes as $quiz): ?>
                         <tr class="hover:bg-indigo-50/30 transition-colors">
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-md">#<?= $quiz["id"] ?></span>
-                            </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm font-semibold text-gray-900"><?= htmlspecialchars($quiz["title"]) ?></div>
                             </td>

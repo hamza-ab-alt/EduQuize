@@ -1,13 +1,17 @@
 <?php
 require_once "../../config/database.php";
-require "../../src/services/QuizService.php";
+require_once "../../src/Services/QuizService.php";
+use App\Services\QuizService;
 $D = new Database();
 $conn = $D->getConnection();
-if(isset($_POST["crbtn"])){
-    $title=$_POST["title"];
-    $code=$_POST["code"];
-    $desc=$_POST["desc"];
-    checkInsert($title,$desc,$code);
+if (isset($_POST["crbtn"])) {
+
+    $title = $_POST["title"];
+    $code = $_POST["code"];
+    $desc = $_POST["desc"];
+
+    $service = new QuizService();
+    $service->checkInsert($title, $desc, $code);
 }
 if(isset($_POST["addQ"])){
     ?>

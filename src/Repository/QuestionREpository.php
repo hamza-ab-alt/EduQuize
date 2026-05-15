@@ -1,32 +1,41 @@
 <?php
 namespace App\Repository;
-require "../entity/question.php";
+
+require_once __DIR__ . "/../../config/database.php";
 use PDO;
+use PDOException;
 
 class QuestionRepository {
     private $db;
-    public function __construct($db) {
-        $this->db = $db;
+
+    public function __construct() {
+        $database = new \Database();
+        $this->db = $database->getConnection();
     }
+
     public function getQuestionsByQuiz($quiz_id) {
         $stmt = $this->db->prepare("SELECT * FROM questions WHERE quiz_id = :qid");
         $stmt->execute(['qid' => $quiz_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getAnswersByQuestion($question_id) {
-        $stmt = $this->db->prepare("SELECT * FROM answers WHERE question_id = :qid");
-        $stmt->execute(['qid' => $question_id]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function creatQuestion(Question $qestion){
+    public function createQuestion($quiz_id, $question_text) {
         try {
-            $sql="INSERT INTO questions(quiz_id,question) VALUES (?,?)";
+            $sql = "INSERT INTO questions (quiz_id, question) VALUES (?, ?)";
             $stmt = $this->db->prepare($sql);
-            $stmt->execute([$qestion->quiz_id,$qestion->question_text]);
-            return $stmt;
+            return $stmt->execute([$quiz_id, $question_text]);
         } catch (PDOException $e) {
-            return $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteQuestion($id) {
+        try {
+            $sql = "DELETE FROM questions WHERE id = ?";
+            $stmt = $this->db->prepare($sql);
+            return $stmt->execute([$id]);
+        } catch (PDOException $e) {
+            return false;
         }
     }
 }
