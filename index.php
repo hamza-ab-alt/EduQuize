@@ -102,7 +102,8 @@ if (isset($_GET["logout"])) {
         Welcome <?= $_SESSION["name"] ?>
     </h2>
 
-    
+    <p>Role: <?= $_SESSION["role"] ?></p>
+
 
 <?php endif; ?>
 
