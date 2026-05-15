@@ -81,8 +81,11 @@ if (isset($_GET["logout"])) {
 
     <form method="POST">
 
-      
-    
+        <input name="name" placeholder="Name" class="border w-full p-2 mb-2">
+        <input name="email" placeholder="Email" class="border w-full p-2 mb-2">
+        <input type="password" name="password" placeholder="Password" class="border w-full p-2 mb-2">
+
+       
 
         <button name="register" class="bg-green-500 text-white w-full p-2">
             Register
