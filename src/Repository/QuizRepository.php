@@ -1,13 +1,12 @@
 <?php
 namespace App\Repository;
-
 use App\Entity\Quiz;
 use PDO;
 
 class QuizRepository {
     private $db;
 
-    public function __construct($db) {
+    public function __construct() {
         $this->db = $db;
     }
 
@@ -20,5 +19,14 @@ class QuizRepository {
             return new Quiz($row['id'], $row['title'], $row['code_quiz']);
         }
         return null;
+    }
+    public function createQuiz(Quiz $quiz){
+          try {
+            $sql="INSERT INTO quizzes(title,description,code_quiz) VALUES(?,?,?)";
+            $stm=$this->db->prepare($sql);
+            $stm->execute([$quiz->title,$quiz->description,$quiz->code_quiz]);
+          } catch (PDOException $e) {
+             echo $e->getMessage();
+          }
     }
 }
