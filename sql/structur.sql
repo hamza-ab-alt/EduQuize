@@ -52,24 +52,12 @@ VALUES (1, 'Que signifie l''acronyme PDO en PHP ?');
 INSERT INTO questions (quiz_id, question) 
 VALUES (1, 'Quelle méthode est utilisée pour exécuter une requête préparée ?');
 INSERT INTO answers (question_id, answer, is_correct) VALUES 
-(1, 'PHP Data Objects', 1),
-(1, 'Personal Data Object', 0),
-(1, 'PHP Database Orientation', 0),
-(1, 'Programmable Data Object', 0);
+(4, 'PHP Data Objects', 1),
+(4, 'Personal Data Object', 0),
+(4, 'PHP Database Orientation', 0),
+(4, 'Programmable Data Object', 0);
 INSERT INTO answers (question_id, answer, is_correct) VALUES 
-(2, 'query()', 0),
-(2, 'execute()', 1),
-(2, 'run()', 0),
-(2, 'fetch()', 0);
-
-
--- CREATE TABLE student_answers (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     result_id INT,
---     question_id INT,
---     answer_id INT,
-
---     FOREIGN KEY (result_id) REFERENCES results(id),
---     FOREIGN KEY (question_id) REFERENCES questions(id),
---     FOREIGN KEY (answer_id) REFERENCES answers(id)
--- );
+(5, 'query()', 0),
+(5, 'execute()', 1),
+(5, 'run()', 0),
+(5, 'fetch()', 0);
