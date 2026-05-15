@@ -104,6 +104,7 @@ if (isset($_GET["logout"])) {
 
     <p>Role: <?= $_SESSION["role"] ?></p>
 
+    <a href="?logout=1" class="text-red-500">Logout</a>
 
 <?php endif; ?>
 
