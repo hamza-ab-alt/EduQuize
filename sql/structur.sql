@@ -61,3 +61,14 @@ INSERT INTO answers (question_id, answer, is_correct) VALUES
 (5, 'execute()', 1),
 (5, 'run()', 0),
 (5, 'fetch()', 0);
+
+CREATE TABLE student_answers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    result_id INT,
+    question_id INT,
+    answer_id INT,
+
+    FOREIGN KEY (result_id) REFERENCES results(id),
+    FOREIGN KEY (question_id) REFERENCES questions(id),
+    FOREIGN KEY (answer_id) REFERENCES answers(id)
+);
