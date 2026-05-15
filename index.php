@@ -98,6 +98,13 @@ if (isset($_GET["logout"])) {
 <?php else: ?>
 
   
+    <h2 class="text-xl font-bold">
+        Welcome <?= $_SESSION["name"] ?>
+    </h2>
+
+    
+
+<?php endif; ?>
 
 </div>
 
